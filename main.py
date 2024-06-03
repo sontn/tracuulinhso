@@ -121,16 +121,16 @@ def tam_mot_linh_so_func(phone_number):
 
     # Kiểm tra dien_giai_linh_so có chữ ĐẠI CÁT không thì in màu đỏ
     if "ĐẠI CÁT" in dien_giai_linh_so:
-        print(f"{RED}Số {linh_so}. {dien_giai_linh_so}{RESET}")
+        print(f"{RED}Quẻ số {linh_so}. {dien_giai_linh_so}{RESET}")
         exit()
         
     # Kiểm tra dien_giai_linh_so có chữ CÁT không thì in màu xanh
     if "CÁT" in dien_giai_linh_so and "BÁN CÁT" not in dien_giai_linh_so:
-        print(f"{BLUE}Số {linh_so}. {dien_giai_linh_so}{RESET}")
+        print(f"{BLUE}Quẻ số  {linh_so}. {dien_giai_linh_so}{RESET}")
         exit()
 
 
-    print(f"Số {linh_so}. {dien_giai_linh_so}")
+    print(f"Quẻ số {linh_so}. {dien_giai_linh_so}")
 
 phone_number = "0924146688"
 tam_mot_linh_so_func(phone_number)
