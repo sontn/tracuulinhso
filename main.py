@@ -118,12 +118,12 @@ if linh_so not in tam_mot_linh_so:
     exit()
 dien_giai_linh_so = tam_mot_linh_so[linh_so]
 
-# Kiểm tra dien_giai_linh_so có chữ ĐẠI CÁT không
+# Kiểm tra dien_giai_linh_so có chữ ĐẠI CÁT không thì in màu đỏ
 if "ĐẠI CÁT" in dien_giai_linh_so:
     print(f"{RED}Số {linh_so}. {dien_giai_linh_so}{RESET}")
     exit()
     
-# Kiểm tra dien_giai_linh_so có chữ CÁT không
+# Kiểm tra dien_giai_linh_so có chữ CÁT không thì in màu xanh
 if "CÁT" in dien_giai_linh_so and "BÁN CÁT" not in dien_giai_linh_so:
     print(f"{BLUE}Số {linh_so}. {dien_giai_linh_so}{RESET}")
     exit()
