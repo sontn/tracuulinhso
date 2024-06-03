@@ -120,19 +120,26 @@ def tam_mot_linh_so_func(phone_number):
     return f"Số {linh_so}. {dien_giai_linh_so}"
 
 def lambda_handler(event, context):
-    # Lấy giá trị phone_number từ sự kiện
-    phone_number = event.get('phone_number', None)
+    # Phân tích cú pháp phần thân của yêu cầu
+    try:
+        body = json.loads(event['body'])
+    except (json.JSONDecodeError, KeyError):
+        return {
+            'statusCode': 400,
+            'body': json.dumps('Invalid JSON or body not found')
+        }
     
+    # Kiểm tra và lấy giá trị phone_number từ phần thân
+    phone_number = body.get('phone_number', None)
     if phone_number is None:
         return {
             'statusCode': 400,
             'body': json.dumps('phone_number is required')
         }
 
-    # Xử lý logic với phone_number
     final_result = tam_mot_linh_so_func(phone_number)
-        
+
     return {
         'statusCode': 200,
-        'body': json.dumps(f'Kết quả cuối cùng: {final_result}')
+        'body': json.dumps(f'{final_result}')
     }
