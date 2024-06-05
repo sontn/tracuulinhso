@@ -133,6 +133,7 @@ def tam_mot_linh_so_func(phone_number):
     return f"Số {linh_so}. {dien_giai_linh_so}"
 
 def lambda_handler(event, context):
+    user_agent = event['requestContext']['http'].get('userAgent', 'Unknown')
     # Phân tích cú pháp phần thân của yêu cầu
     try:
         body = json.loads(event['body'])
@@ -151,7 +152,7 @@ def lambda_handler(event, context):
         }
 
     # save phone_number to dynamodb
-    table.put_item(Item={'phone_number': phone_number, 'time_stamp': formatted_datetime})
+    table.put_item(Item={'phone_number': phone_number, 'time_stamp': formatted_datetime, 'user_agent': user_agent})
 
     final_result = tam_mot_linh_so_func(phone_number)
 
