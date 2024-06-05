@@ -1,10 +1,17 @@
 import json
 import boto3
+from datetime import datetime, timedelta
 
 client = boto3.client('dynamodb')
 dynamodb = boto3.resource('dynamodb')
 tableName = 'phone_number'
 table = dynamodb.Table(tableName)
+
+utc_datetime = datetime.utcnow()
+gmt_plus_7_datetime = utc_datetime + timedelta(hours=7)
+
+# Format the datetime in the desired format
+formatted_datetime = gmt_plus_7_datetime.strftime('%Y-%m-%d, %H:%M')
 
 def tam_mot_linh_so_func(phone_number):
     tam_mot_linh_so = {
@@ -144,7 +151,7 @@ def lambda_handler(event, context):
         }
 
     # save phone_number to dynamodb
-    table.put_item(Item={'phone_number': phone_number})
+    table.put_item(Item={'phone_number': phone_number, 'time_stamp': formatted_datetime})
 
     final_result = tam_mot_linh_so_func(phone_number)
 
