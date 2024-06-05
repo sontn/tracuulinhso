@@ -1,4 +1,10 @@
 import json
+import boto3
+
+client = boto3.client('dynamodb')
+dynamodb = boto3.resource('dynamodb')
+tableName = 'phone_number'
+table = dynamodb.Table(tableName)
 
 def tam_mot_linh_so_func(phone_number):
     tam_mot_linh_so = {
@@ -136,6 +142,9 @@ def lambda_handler(event, context):
             'statusCode': 400,
             'body': json.dumps('phone_number is required')
         }
+
+    # save phone_number to dynamodb
+    table.put_item(Item={'phone_number': phone_number})
 
     final_result = tam_mot_linh_so_func(phone_number)
 
