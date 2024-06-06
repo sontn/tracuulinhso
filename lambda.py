@@ -151,8 +151,9 @@ def lambda_handler(event, context):
             'body': json.dumps('phone_number is required')
         }
 
-    # save phone_number to dynamodb
-    table.put_item(Item={'phone_number': phone_number, 'time_stamp': formatted_datetime, 'user_agent': user_agent})
+    # save phone_number to dynamodb if len of phone number is less than 15
+    if len(phone_number) <= 15:
+        table.put_item(Item={'phone_number': phone_number, 'time_stamp': formatted_datetime, 'user_agent': user_agent})
 
     final_result = tam_mot_linh_so_func(phone_number)
 
