@@ -302,7 +302,9 @@ phone_numbers_3 = [
     "0586953579"
 ]
 
-for number in phone_numbers_0:
+phone_number = phone_numbers_0 + phone_numbers_1 + phone_numbers_2 + phone_numbers_3
+
+for number in phone_number:
     tam_mot_linh_so_func(number)
 
 
