@@ -194,8 +194,6 @@ def tam_mot_linh_so_func(phone_number):
     if "ĐẠI CÁT" in dien_giai_linh_so:
         print(f"Số điện thoại: {phone_number}. Quẻ số {linh_so}. {dien_giai_linh_so}")
 
-# phone_number = "0921588858"
-# tam_mot_linh_so_func(phone_number)
 
 phone_numbers = [
     "0925288888", "0921455555", "0921588858", "0923858885", "0927626662", "0925669993",
