@@ -132,5 +132,5 @@ def tam_mot_linh_so_func(phone_number):
 
     print(f"Quẻ số {linh_so}. {dien_giai_linh_so}")
 
-phone_number = "0924146688"
+phone_number = "0913575599"
 tam_mot_linh_so_func(phone_number)
